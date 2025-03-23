@@ -1,0 +1,16 @@
+{
+  "data": {
+    "recentGigs": [
+      {
+        "id": "8144f608-3e87-47ea-ad16-677d5679b445",
+        "category": "Adventure",
+        "title": "gig title"
+      },
+      {
+        "id": "883b8a41-831f-4a1a-86ca-d26adc8f84aa",
+        "category": "IT",
+        "title": "spring boot"
+      }
+    ]
+  }
+}

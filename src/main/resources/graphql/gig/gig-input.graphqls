@@ -1,0 +1,6 @@
+input GigInput {
+    title: String!
+    description: String!
+    category: String!
+    sellerId: ID!
+}

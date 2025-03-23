@@ -1,0 +1,5 @@
+type Mutation {
+    createSeller(seller: SellerInput): ID!
+    createGig(gig: GigInput): ID!
+    createMessage(id: ID! @NotBlank(message: "createMessage.NotBlank.message"), title: String! @NotBlank(message: "createMessage.NotBlank.message")): ID!
+}

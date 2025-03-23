@@ -1,0 +1,8 @@
+type Seller {
+    id: ID!
+    name: String!
+    email: String!
+    gigs: [Gig]!
+    gigCount: Int!
+    reviews(first: Int!): [Review]!
+}

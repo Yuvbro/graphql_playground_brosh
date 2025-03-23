@@ -1,0 +1,6 @@
+type Review {
+    id: ID!
+    text: String!
+    gig: Gig!
+    seller: Seller!
+}

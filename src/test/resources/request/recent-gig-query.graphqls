@@ -1,0 +1,7 @@
+query {
+    recentGigs(count: 2, cursor:0) {
+        id
+        category
+        title
+    }
+}

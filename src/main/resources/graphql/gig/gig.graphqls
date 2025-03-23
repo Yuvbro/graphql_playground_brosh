@@ -1,0 +1,8 @@
+type Gig {
+    id: ID!
+    title: String!
+    description: String!
+    category: String!
+    seller: Seller!
+    reviews(first: Int!): [Review]!
+}
