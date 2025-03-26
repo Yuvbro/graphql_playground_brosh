@@ -1,0 +1,3 @@
+type Buyer {
+    birthDate: Date
+}

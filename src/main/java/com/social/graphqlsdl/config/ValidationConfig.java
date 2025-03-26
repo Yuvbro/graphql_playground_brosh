@@ -1,7 +1,5 @@
 package com.social.graphqlsdl.config;
 
-import graphql.scalars.ExtendedScalars;
-import graphql.schema.GraphQLScalarType;
 import graphql.validation.rules.OnValidationErrorStrategy;
 import graphql.validation.rules.ValidationRules;
 import graphql.validation.schemawiring.ValidationSchemaWiring;
