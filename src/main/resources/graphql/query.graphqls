@@ -10,5 +10,5 @@ type Query {
     sellers: [Seller]!
     recentGigs(count: Int!, cursor: Int!): [Gig]!
     recentReviews(count: Int!, cursor: Int!): [Review]!
-#    customer: Customer!
+    buyer: Buyer!
 }

@@ -1,3 +1,4 @@
-#type Subscription {
-#    recentReview: Review!
-#}
+type Subscription {
+    recentReview: Review!
+    recentReviewBySellerId(sellerId: ID!): Review!
+}
