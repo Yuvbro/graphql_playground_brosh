@@ -36,5 +36,11 @@ query {
 }
 ```
 
+## 🗺️ Schema Diagram
+
+Here’s a visual representation of the GraphQL schema and its relationships, generated with [Voyager](https://github.com/APIs-guru/graphql-voyager):
+
+![GraphQL Schema Diagram](schema_diagram_voyager_graphql.png)
+
 🧑‍💻 Author
 Yuval Brosh

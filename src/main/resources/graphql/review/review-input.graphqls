@@ -1,0 +1,5 @@
+input ReviewInput {
+    text: String!
+    gigId: ID!
+    sellerId: ID!
+}

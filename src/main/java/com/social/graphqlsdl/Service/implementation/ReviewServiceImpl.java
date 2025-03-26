@@ -4,7 +4,10 @@ import com.social.graphqlsdl.Service.ReviewService;
 import com.social.graphqlsdl.dto.ReviewDto;
 import com.social.graphqlsdl.model.Gig;
 import com.social.graphqlsdl.model.Review;
+import com.social.graphqlsdl.model.Seller;
+import com.social.graphqlsdl.repository.GigRepository;
 import com.social.graphqlsdl.repository.ReviewRepository;
+import com.social.graphqlsdl.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,11 +20,15 @@ import java.util.stream.Collectors;
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
-    @Autowired
     private final ReviewRepository reviewRepository;
 
-    public ReviewServiceImpl(ReviewRepository reviewRepository) {
+    private final SellerRepository sellerRepository;
+    private final GigRepository gigRepository;
+
+    public ReviewServiceImpl(ReviewRepository reviewRepository, SellerRepository sellerRepository, GigRepository gigRepository) {
         this.reviewRepository = reviewRepository;
+        this.sellerRepository = sellerRepository;
+        this.gigRepository = gigRepository;
     }
 
     @Override
@@ -52,6 +59,10 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<ReviewDto> getRecentReviews(int count, int cursor) {
+        if (count < 1) {
+            throw new IllegalArgumentException("Count must be greater than 0");
+        }
+
         PageRequest pageable = PageRequest.of(cursor, count);
         Page<Review> lastReviews = reviewRepository.findAll(pageable);
 
@@ -63,6 +74,21 @@ public class ReviewServiceImpl implements ReviewService {
                         .sellerId(review.getSeller().getId())
                         .build())
                 .collect(Collectors.toList());
+    }
 
+    @Override
+    public UUID createReview(ReviewDto reviewDto) {
+        Seller seller = sellerRepository.findById(reviewDto.getSellerId())
+                .orElseThrow(() -> new RuntimeException("Seller not found with ID: " + reviewDto.getSellerId()));
+        Gig gig = gigRepository.findById(reviewDto.getGigId())
+                .orElseThrow(() -> new RuntimeException("Gig not found with ID: " + reviewDto.getGigId()));
+
+        Review review = Review.builder()
+                .text(reviewDto.getText())
+                .gig(gig)
+                .seller(seller)
+                .build();
+        Review newReview = reviewRepository.saveAndFlush(review);
+        return newReview.getId();
     }
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@Data
+@Data  // Lombok annotation to create all the (public) getters, setters, equals, hash, and toString methods based on the fields (not public fields)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
