@@ -33,7 +33,12 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // H2 is a lightweight, in-memory(The DB runs inside your application’s JVM), relational database written in Java.
+    // Pure Java → no need to install anything externally, In-memory (RAM) by default → data is wiped when the app shuts down
+    // It can run in embedded mode (inside your application)
     runtimeOnly 'com.h2database:h2'
+
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.graphql-java-kickstart:graphql-spring-boot-starter-test:11.1.0'

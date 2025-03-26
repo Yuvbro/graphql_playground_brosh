@@ -14,4 +14,5 @@ public interface ReviewService {
 
     List<ReviewDto> getRecentReviews(int count, int cursor);
 
+    UUID createReview(ReviewDto reviewDto);
 }
